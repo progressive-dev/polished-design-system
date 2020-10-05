@@ -1,17 +1,17 @@
 import React, { HTMLAttributes, ReactNode } from 'react';
-import { StyledTextInput, StyledWrapper, StyledIcon } from './styled';
-
-export type TextInputSize = 'default' | 'large' | 'small';
+import { ComponentSize } from '../../config';
+import { StyledTextInput, StyledWrapper, StyledIcon, StyledCross } from './styled';
 
 export interface TextInputProps extends Omit<HTMLAttributes<HTMLInputElement>, 'size' | 'disabled'> {
     icon?: React.ElementType;
-    size?: TextInputSize;
+    size?: ComponentSize;
     disabled?: boolean;
     error?: boolean;
     value?: string;
     width?: string;
     /* Useful when input is controlled by another element */
-    nonInteractive?: boolean;
+    readonly?: boolean;
+    clearable?: boolean;
 }
 
 const TextInput: React.ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (props, ref) => {
@@ -20,23 +20,22 @@ const TextInput: React.ForwardRefRenderFunction<HTMLInputElement, TextInputProps
         size = 'default',
         className,
         disabled = false,
-        nonInteractive = false,
         error = false,
         value,
         onChange,
         placeholder,
         width = '100%',
+        readonly = false,
+        clearable = false,
     } = props;
 
     const styles = {
         innerSize: size,
-        disabled: disabled || nonInteractive,
+        disabled: disabled,
         error,
         width,
         withIcon: icon !== undefined,
-        nonInteractive,
-        /* Disabled background in case of nonInteractive */
-        disabledBackground: disabled,
+        withCross: clearable
     };
 
     return (
@@ -45,12 +44,22 @@ const TextInput: React.ForwardRefRenderFunction<HTMLInputElement, TextInputProps
                 type='text'
                 value={value}
                 onChange={onChange}
+                readOnly={readonly}
                 ref={ref}
                 className={className}
                 placeholder={placeholder}
                 {...styles}
             />
             <StyledIcon as={icon} innerSize={size} />
+            {clearable && value ? (
+                <StyledCross 
+                    innerSize={size} 
+                    onClick={() => 
+                        onChange 
+                        && onChange({ currentTarget: { value: '' } } as React.FormEvent<HTMLInputElement>)
+                    }
+                />
+            ) : null}
         </StyledWrapper>
     );
 }

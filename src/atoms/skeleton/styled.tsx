@@ -3,6 +3,7 @@ import styled from "styled-components";
 interface StyledSkeletonProps {
     width: number;
     height: number;
+    borderRadius: string;
 }
 
 export const StyledSkeleton = styled.div<StyledSkeletonProps>`
@@ -11,6 +12,7 @@ export const StyledSkeleton = styled.div<StyledSkeletonProps>`
     width: ${pr => pr.width}px;
     height: ${pr => pr.height}px;
     background-color: #e8e8e8;
+    border-radius: ${pr => pr.borderRadius};
 
     &:before {
         content: '';

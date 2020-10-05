@@ -1,21 +1,10 @@
 import styled from "styled-components";
-import { TextInputSize } from "./text-input";
-
-const sidePaddings: {[key in TextInputSize]: number} = {
-    large: 30,
-    default: 25,
-    small: 20,
-}
-
-const heights: {[key in TextInputSize]: number} = {
-    large: 55,
-    default: 45,
-    small: 35,
-}
+import { ComponentSize, heights, sidePaddings } from "../../config";
+import { ReactComponent as CrossIcon } from '../../icons/cross.svg';
 
 interface StyledWrapperProps {
     width: string;
-    innerSize: TextInputSize;
+    innerSize: ComponentSize;
 }
 
 export const StyledWrapper = styled.div<StyledWrapperProps>`
@@ -25,13 +14,12 @@ export const StyledWrapper = styled.div<StyledWrapperProps>`
 `;
 
 interface StyledTextInputProps {
-    innerSize: TextInputSize;
+    innerSize: ComponentSize;
     disabled: boolean;
-    disabledBackground: boolean;
     error: boolean;
     width: string;
     withIcon: boolean;
-    nonInteractive: boolean;
+    withCross: boolean;
 }
 
 
@@ -40,10 +28,9 @@ export const StyledTextInput = styled.input<StyledTextInputProps>`
     box-sizing: border-box;
     position: relative;
     background-color: ${ (pr) => pr.error ? '#ffe3e6' : '#EEEEEE' };
-    padding: 0 ${ pr => sidePaddings[pr.innerSize] }px;
-    ${ pr => pr.withIcon ? `
-        padding: 0 ${ sidePaddings[pr.innerSize] }px 0 ${ sidePaddings[pr.innerSize] * 2 + 10/* icon */ }px;
-    ` : ''}
+    padding: 0;
+    padding-left: ${ pr => sidePaddings[pr.innerSize] + (pr.withIcon ? sidePaddings[pr.innerSize] + 10/* icon */ : 0) }px;
+    padding-right: ${ pr => sidePaddings[pr.innerSize] + (pr.withCross ? sidePaddings[pr.innerSize]/* cross */ : 0) }px;
     height: ${ pr => heights[pr.innerSize]}px;
     width: ${pr => pr.width};
     border: none;
@@ -66,16 +53,10 @@ export const StyledTextInput = styled.input<StyledTextInputProps>`
     &:focus {
         box-shadow: inset 0 0 0 2px ${pr => pr.error ? '#d93848' : '#000'};
     }
-
-    ${ pr => pr.nonInteractive ? `
-        pointer-events: none;
-        box-shadow: none;
-        background-color: ${ pr.error ? '#ffe3e6' : pr.disabledBackground ? '#a6a6a6' : '#EEEEEE' };
-    ` : ''}
 `;
 
 interface StyledIconProps {
-    innerSize: TextInputSize;
+    innerSize: ComponentSize;
 }
 
 export const StyledIcon = styled.div<StyledIconProps>`
@@ -84,6 +65,22 @@ export const StyledIcon = styled.div<StyledIconProps>`
     left: ${ pr => sidePaddings[pr.innerSize]}px;
     top: 50%;
     transform: translateY(-50%);
+
+    height: 15px;
+    width: 15px;
+`;
+
+interface StyledCrossProps {
+    innerSize: ComponentSize;
+}
+
+export const StyledCross = styled(CrossIcon)<StyledCrossProps>`
+    box-sizing: border-box;
+    position: absolute;
+    right: ${ pr => sidePaddings[pr.innerSize]}px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
 
     height: 15px;
 `;

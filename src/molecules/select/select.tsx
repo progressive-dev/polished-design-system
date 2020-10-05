@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import TextInput from '../../atoms/text-input';
+import { ComponentSize } from '../../config';
 import { 
     StyledWrapper,
     StyledHeader, 
@@ -10,8 +11,6 @@ import {
 } from './styled';
 import { useSelectLogic } from './use-select-logic';
 
-export type SelectSize = 'default' | 'large' | 'small';
-
 export type SelectOption = {
     label: string;
     value: string;
@@ -21,7 +20,7 @@ export type SelectChangeHandler = (option: SelectOption | undefined) => void;
 
 export interface SelectProps {
     className?: string;
-    size?: SelectSize;
+    size?: ComponentSize;
     disabled?: boolean;
     error?: boolean;
     width?: string;
@@ -50,7 +49,7 @@ const Select: React.ForwardRefRenderFunction<HTMLDivElement, SelectProps> = (pro
         error,
         width: '100%',
         placeholder,
-        nonInteractive: true,
+        readonly: true,
     }
 
     const headerRef = useRef<HTMLDivElement>(null);
@@ -71,11 +70,6 @@ const Select: React.ForwardRefRenderFunction<HTMLDivElement, SelectProps> = (pro
         >
             <StyledHeader
                 ref={headerRef}
-                width={width}
-                innerSize={size}
-                error={error}
-                disabled={disabled}
-                tabIndex={0}
                 onClick={() => setOptionsListVisible(true)}
             >
                 <TextInput

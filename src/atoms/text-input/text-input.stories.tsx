@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import TextInput, { TextInputProps } from '../atoms/text-input';
+import TextInput, { TextInputProps } from '.';
 import styled from 'styled-components';
-import { ReactComponent as UserIcon } from '../icons/user.svg';
+import { ReactComponent as UserIcon } from '../../icons/user.svg';
 
 
 export default {
@@ -16,7 +16,7 @@ const Template: Story<TextInputProps> = (args) => <TextInput {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  // width: '250px'
+  width: '250px'
 }
 
 export const Placeholder = Template.bind({});
@@ -46,11 +46,25 @@ Disabled.args = {
   disabled: true,
 }
 
-export const NonInteractive = Template.bind({});
-NonInteractive.args = {
-  placeholder: 'Not focusable',
+export const ReadOnly = Template.bind({});
+ReadOnly.args = {
+  placeholder: 'Not editable',
   width: '250px',
-  nonInteractive: true,
+  readonly: true,
+}
+
+export const Clearable = () => {
+  const [value, setValue] = useState('');
+
+  return (
+    <TextInput
+      placeholder='Type and clear'
+      width='250px'
+      value={value}
+      onChange={e => setValue(e.currentTarget.value)}
+      clearable
+    />
+  );
 }
 
 const Row = styled.div`

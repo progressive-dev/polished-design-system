@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { ButtonSize, ButtonType } from "./button";
+import { ComponentSize, heights, sidePaddings } from "../../config";
+import { ButtonType } from "./button";
 
 type StateColors = {
     regular: string;
@@ -20,26 +21,15 @@ const typeColors: {[key in ButtonType]: StateColors} = {
         hover: '#dbdbdb',
     },
     secondary: {
-        regular: '#616161',
+        regular: '#000',
         hover: '#3d3d3d',
     }
 };
 
-const sidePaddings: {[key in ButtonSize]: string} = {
-    large: '35px',
-    default: '30px',
-    small: '25px',
-}
-
-const heights: {[key in ButtonSize]: string} = {
-    large: '55px',
-    default: '45px',
-    small: '35px',
-}
-
 interface StyledButtonProps {
     innerType: ButtonType;
-    size: ButtonSize;
+    size: ComponentSize;
+    withText: boolean;
 }
 
 /* Real tag is assigned dynamically */
@@ -50,14 +40,14 @@ export const StyledButton = styled.button<StyledButtonProps>`
 
     /* Add margin in case of loading or icon */
     & > *:nth-child(1) {
-        margin-left: 7px;
+        margin-left: ${pr => pr.withText ? 7 : 0}px;
     }
 
     border: none;
     cursor: pointer;
     background-color: ${ (pr) => typeColors[pr.innerType].regular };
-    padding: 0 ${ pr => sidePaddings[pr.size]};
-    height: ${ pr => heights[pr.size]};
+    padding: 0 ${ pr => sidePaddings[pr.size]}px;
+    height: ${ pr => heights[pr.size]}px;
     color: ${ pr => pr.innerType === 'ghost' 
         ? typeColors['default'].regular
         : '#fff'

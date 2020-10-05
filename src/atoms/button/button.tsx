@@ -1,16 +1,16 @@
 import React, { ElementType, MouseEventHandler, ReactNode } from 'react';
 import { StyledButton, StyledIcon } from './styled';
 import Spinner from '../spinner';
+import { ComponentSize } from '../../config';
 
 export type ButtonType = 'default' | 'danger' | 'ghost' | 'secondary';
-export type ButtonSize = 'default' | 'large' | 'small';
 
 interface BaseButtonProps {
     type?: ButtonType;
     icon?: ElementType;
-    size?: ButtonSize;
+    size?: ComponentSize;
     className?: string;
-    children: ReactNode;
+    children?: ReactNode;
     disabled?: boolean;
     loading?: boolean;
 }
@@ -55,6 +55,7 @@ const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref
         innerType: type,
         size,
         disabled,
+        withText: children != null
     }
 
     const spinnerStyles = {
