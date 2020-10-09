@@ -1,11 +1,11 @@
 import React from 'react';
-import { GlobalStyle } from '../src/config/global.styles';
+import { GlobalStyles } from '../src/config/global.styles';
 
 // Global decorator to apply the styles to all stories
 export const decorators = [
   Story => (
     <>
-      <GlobalStyle />
+      <GlobalStyles />
       <Story />
     </>
   ),
