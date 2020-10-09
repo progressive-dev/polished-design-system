@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledFormControl = styled.div`
     box-sizing: border-box;
     position: relative;
+    margin-bottom: 20px;
 `;
 
 interface StyledLabelProps {
@@ -25,6 +26,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
 `;
 
 const StyledCaption = styled.span`
+    position: absolute;
     font-size: 0.75em;
 `;
 

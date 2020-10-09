@@ -42,6 +42,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
     & > *:nth-child(1) {
         margin-left: ${pr => pr.withText ? 7 : 0}px;
     }
+    font-size: 15px;
 
     border: none;
     cursor: pointer;

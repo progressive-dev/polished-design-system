@@ -30,24 +30,3 @@ Disabled.args = {
     href: '#',
     disabled: true
 }
-
-// const Row = styled.div`
-//   display: flex;
-//   align-items: flex-start;
-//   margin-bottom: 10px;
-//   & > * {
-//     margin-right: 10px;
-//   }
-// `;
-
-// export const Sizes = () => {
-//   return (
-//     <>
-//       <Row>
-//         <Link size='large'>Large</Link>
-//         <Link size='default'>Default</Link>
-//         <Link size='small'>Small</Link>
-//       </Row>
-//     </>
-//   );
-// };

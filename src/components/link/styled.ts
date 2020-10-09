@@ -12,6 +12,7 @@ export const StyledLink = styled.a<StyledLinkProps>`
     text-decoration: none;
     margin: 0;
     padding: 0;
+    font-size: 15px;
 
     &:active, &:visited {
         color: #0018cf;
