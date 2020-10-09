@@ -1,7 +1,7 @@
 import React, { ElementType, MouseEventHandler, ReactNode } from 'react';
 import { StyledButton, StyledIcon } from './styled';
 import Spinner from '../spinner';
-import { ComponentSize } from '../../config';
+import { ComponentSize } from '../../config/sizes';
 
 export type ButtonType = 'default' | 'danger' | 'ghost' | 'secondary';
 

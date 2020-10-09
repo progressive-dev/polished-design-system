@@ -1,5 +1,5 @@
-import React, { HTMLAttributes, ReactNode } from 'react';
-import { ComponentSize } from '../../config';
+import React, { HTMLAttributes } from 'react';
+import { ComponentSize } from '../../config/sizes';
 import { StyledTextInput, StyledWrapper, StyledIcon, StyledCross } from './styled';
 
 export interface TextInputProps extends Omit<HTMLAttributes<HTMLInputElement>, 'size' | 'disabled'> {

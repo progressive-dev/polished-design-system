@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ComponentSize, heights, sidePaddings } from "../../config";
+import { ComponentSize, heights, sidePaddings } from "../../config/sizes";
 import { ReactComponent as CrossIcon } from '../../icons/cross.svg';
 
 interface StyledWrapperProps {
@@ -59,7 +59,10 @@ interface StyledIconProps {
     innerSize: ComponentSize;
 }
 
-export const StyledIcon = styled.div<StyledIconProps>`
+export const StyledIcon = styled.div.withConfig({
+    shouldForwardProp: (prop, defPropValFN) =>
+      !["innerSize"].includes(prop) && defPropValFN(prop),
+  })<StyledIconProps>`
     box-sizing: border-box;
     position: absolute;
     left: ${ pr => sidePaddings[pr.innerSize]}px;

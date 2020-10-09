@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ComponentSize, heights, sidePaddings } from "../../config";
+import { ComponentSize, heights, sidePaddings } from "../../config/sizes";
 import { ReactComponent as ArrowDown } from '../../icons/arrow-down.svg';
 
 interface StyledWrapperProps {
@@ -28,7 +28,10 @@ interface StyledArrowProps {
     upwards: boolean;
 }
 
-export const StyledArrow = styled(ArrowDown)<StyledArrowProps>`
+export const StyledArrow = styled(ArrowDown).withConfig({
+    shouldForwardProp: (prop, defPropValFN) =>
+      !["innerSize", "upwards"].includes(prop) && defPropValFN(prop),
+  })<StyledArrowProps>`
     box-sizing: border-box;
     position: absolute;
     right: ${ pr => sidePaddings[pr.innerSize]}px;

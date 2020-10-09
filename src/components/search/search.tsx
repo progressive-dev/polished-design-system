@@ -1,7 +1,7 @@
-import React, { ChangeEventHandler, useRef } from 'react';
+import React, { ChangeEventHandler } from 'react';
 import Button from '../button';
 import TextInput from '../text-input';
-import { ComponentSize } from '../../config';
+import { ComponentSize } from '../../config/sizes';
 import { SearchWrapper } from './styled';
 import { ReactComponent as SearchIcon } from '../../icons/search.svg';
 

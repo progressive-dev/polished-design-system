@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { SelectOption, SelectChangeHandler } from './select';
 
 interface Refs {
@@ -17,11 +17,11 @@ export const useSelectLogic = (
         setOptionsListVisible(false);
     }
 
-    const setOptionsListVisible = (isVisible: boolean) => {
+    const setOptionsListVisible = useCallback((isVisible: boolean) => {
         if (!disabled) {
             __setOptionsListVisible(isVisible);
         }
-    }
+    }, [disabled]);
 
     useEffect(() => {
         /**
@@ -42,7 +42,7 @@ export const useSelectLogic = (
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [headerRef, popoverRef]);
+    }, [headerRef, popoverRef, setOptionsListVisible]);
 
     return { 
         onOptionClick,
