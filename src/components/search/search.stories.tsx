@@ -5,7 +5,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import Search, { SearchProps } from '.';
 
 export default {
-  title: 'Molecules/Search',
+  title: 'Search',
   component: Search,
 } as Meta;
 

@@ -8,7 +8,7 @@ import { ReactComponent as UserIcon } from '../../icons/user.svg';
 
 
 export default {
-  title: 'Atoms/TextInput',
+  title: 'TextInput',
   component: TextInput,
 } as Meta;
 

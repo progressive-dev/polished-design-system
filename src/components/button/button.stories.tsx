@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { ReactComponent as DownloadIcon } from '../../icons/download.svg';
 
 export default {
-  title: 'Atoms/Button',
+  title: 'Button',
   component: Button,
 } as Meta;
 

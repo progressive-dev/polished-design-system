@@ -7,15 +7,12 @@ interface Refs {
 }
 
 export const useSelectLogic = (
-    initialOption: SelectOption | undefined, 
     onChange: SelectChangeHandler = () => {},
     { headerRef, popoverRef }: Refs,
     disabled: boolean
 ) => {
-    const [inputValue, setInputValue] = useState(initialOption ? initialOption.value : '');
     const [optionsListVisible, __setOptionsListVisible] = useState(false);
     const onOptionClick = (option: SelectOption) => {
-        setInputValue(option.value);
         onChange(option);
         setOptionsListVisible(false);
     }
@@ -49,8 +46,6 @@ export const useSelectLogic = (
 
     return { 
         onOptionClick,
-        inputValue,
-        setInputValue,
         optionsListVisible,
         setOptionsListVisible
     };

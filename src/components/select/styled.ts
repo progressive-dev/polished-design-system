@@ -17,6 +17,10 @@ export const StyledWrapper = styled.div<StyledWrapperProps>`
 export const StyledHeader = styled.div`
     box-sizing: border-box;
     position: relative;
+
+    input:not([disabled]) {
+        cursor: pointer;
+    }
 `;
 
 interface StyledArrowProps {
@@ -50,6 +54,7 @@ export const StyledPopover = styled.div<StyledPopoverProps>`
     width: ${pr => pr.width};
     box-sizing: border-box;
     padding: 15px 0;
+    background-color: #fff;
     box-shadow: 0px 2px 2px -1px rgba(0,0,0,0.2), 0px 4px 5px 1px rgba(0,0,0,0.14), 0px 1px 7px 1px rgba(0,0,0,0.12);
 
     transition: opacity 0.3s;

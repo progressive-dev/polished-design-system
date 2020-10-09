@@ -1,6 +1,6 @@
 import React, { ChangeEventHandler, useRef } from 'react';
-import Button from '../../atoms/button';
-import TextInput from '../../atoms/text-input';
+import Button from '../button';
+import TextInput from '../text-input';
 import { ComponentSize } from '../../config';
 import { SearchWrapper } from './styled';
 import { ReactComponent as SearchIcon } from '../../icons/search.svg';

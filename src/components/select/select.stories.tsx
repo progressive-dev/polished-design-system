@@ -6,7 +6,7 @@ import Select, { SelectOption, SelectProps } from '.';
 import styled from 'styled-components';
 
 export default {
-  title: 'Molecules/Select',
+  title: 'Select',
   component: Select,
 } as Meta;
 

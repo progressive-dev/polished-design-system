@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import TextInput from '../../atoms/text-input';
+import React, { HTMLAttributes, useRef } from 'react';
+import TextInput from '../text-input';
 import { ComponentSize } from '../../config';
 import { 
     StyledWrapper,
@@ -18,7 +18,7 @@ export type SelectOption = {
 
 export type SelectChangeHandler = (option: SelectOption | undefined) => void;
 
-export interface SelectProps {
+export interface SelectProps extends Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'width' | 'option' | 'onChange'> {
     className?: string;
     size?: ComponentSize;
     disabled?: boolean;
@@ -56,11 +56,9 @@ const Select: React.ForwardRefRenderFunction<HTMLDivElement, SelectProps> = (pro
     const popoverRef = useRef<HTMLDivElement>(null);
     const {
         onOptionClick,
-        inputValue,
-        setInputValue,
         optionsListVisible,
         setOptionsListVisible
-    } = useSelectLogic(option, onChange, { headerRef, popoverRef }, disabled);
+    } = useSelectLogic(onChange, { headerRef, popoverRef }, disabled);
 
     return (
         <StyledWrapper
@@ -73,8 +71,7 @@ const Select: React.ForwardRefRenderFunction<HTMLDivElement, SelectProps> = (pro
                 onClick={() => setOptionsListVisible(true)}
             >
                 <TextInput
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.currentTarget.value)}
+                    value={option ? option.value : ''}
                     {...textInputStyles}
                 />
                 <StyledArrow innerSize={size} upwards={optionsListVisible} />

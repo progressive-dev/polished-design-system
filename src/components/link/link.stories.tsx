@@ -3,10 +3,9 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import Link, { LinkProps } from '.';
-import styled from 'styled-components';
 
 export default {
-  title: 'Atoms/Link',
+  title: 'Link',
   component: Link,
 } as Meta;
 
