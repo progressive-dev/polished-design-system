@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 
 import TextInput, { TextInputProps } from '.';
 import styled from 'styled-components';
-import { ReactComponent as UserIcon } from '../../icons/user.svg';
+import UserIcon from '../../icons/User';
 
 
 export default {

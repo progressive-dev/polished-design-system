@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ComponentSize, heights, sidePaddings } from "../../config/sizes";
-import { ReactComponent as ArrowDown } from '../../icons/arrow-down.svg';
+import ArrowDown from '../../icons/ArrowDown';
 
 interface StyledWrapperProps {
     width: string;

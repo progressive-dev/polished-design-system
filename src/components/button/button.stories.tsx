@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 
 import Button, { ButtonProps } from '.';
 import styled from 'styled-components';
-import { ReactComponent as DownloadIcon } from '../../icons/download.svg';
+import DownloadIcon from '../../icons/Download';
 
 export default {
   title: 'Button',

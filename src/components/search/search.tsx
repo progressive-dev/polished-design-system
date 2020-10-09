@@ -3,7 +3,7 @@ import Button from '../button';
 import TextInput from '../text-input';
 import { ComponentSize } from '../../config/sizes';
 import { SearchWrapper } from './styled';
-import { ReactComponent as SearchIcon } from '../../icons/search.svg';
+import SearchIcon from '../../icons/Search';
 
 export interface SearchProps {
     className?: string;

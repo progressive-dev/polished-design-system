@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ComponentSize, heights, sidePaddings } from "../../config/sizes";
-import { ReactComponent as CrossIcon } from '../../icons/cross.svg';
+import CrossIcon from '../../icons/Cross';
 
 interface StyledWrapperProps {
     width: string;
