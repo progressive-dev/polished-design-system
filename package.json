@@ -27,6 +27,7 @@
     "build:storybook": "build-storybook -s public",
     "clean": "rm -rf ./lib",
     "compile-icons": "npx @svgr/cli -d src/icons src/icons --typescript",
+    "copy-fonts": "copyfiles -u 1 src/config/fonts/* lib/",
     "eject": "react-scripts eject",
     "prebuild": "npm run clean && npm run compile-icons",
     "start:storybook": "start-storybook -p 6006 -s public",
