@@ -6,7 +6,7 @@ import Select, { SelectOption } from '.';
 import styled from 'styled-components';
 
 export default {
-  title: 'Select',
+  title: 'Components/Select',
   component: Select,
 } as Meta;
 

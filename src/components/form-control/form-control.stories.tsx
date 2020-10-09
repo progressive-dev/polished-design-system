@@ -8,7 +8,7 @@ import Select, { SelectOption } from '../select';
 import { validate as validateEmail } from 'email-validator';
 
 export default {
-  title: 'FormControl',
+  title: 'Components/FormControl',
   component: FormControl,
 } as Meta;
 

@@ -6,7 +6,7 @@ import Spinner, { SpinnerProps } from '.';
 import styled from 'styled-components';
 
 export default {
-  title: 'Spinner',
+  title: 'Components/Spinner',
   component: Spinner,
 } as Meta;
 

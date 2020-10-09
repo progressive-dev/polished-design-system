@@ -5,7 +5,7 @@ import { Meta } from '@storybook/react/types-6-0';
 import Search from '.';
 
 export default {
-  title: 'Search',
+  title: 'Components/Search',
   component: Search,
 } as Meta;
 

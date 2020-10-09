@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import DownloadIcon from '../../icons/Download';
 
 export default {
-  title: 'Button',
+  title: 'Components/Button',
   component: Button,
 } as Meta;
 

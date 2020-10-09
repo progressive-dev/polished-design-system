@@ -8,7 +8,7 @@ import UserIcon from '../../icons/User';
 
 
 export default {
-  title: 'TextInput',
+  title: 'Components/TextInput',
   component: TextInput,
 } as Meta;
 
