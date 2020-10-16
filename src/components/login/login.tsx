@@ -75,7 +75,7 @@ const Login: React.ForwardRefRenderFunction<HTMLFormElement, LoginProps> = (prop
                 <Button
                     onClick={handleSubmit}
                     loading={loading}
-                >Register</Button>
+                >Proceed</Button>
             </ButtonWrapper>
         </StyledForm>
     );
