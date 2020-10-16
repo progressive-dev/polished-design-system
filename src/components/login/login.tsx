@@ -1,11 +1,11 @@
-import React, { HTMLAttributes } from 'react';
+import React, { ChangeEvent, HTMLAttributes } from 'react';
 import useLoginLogic from './use-login-logic';
-import FormControl from '../../components/form-control';
-import TextInput from '../../components/text-input';
-import Button from '../../components/button';
+import FormControl from '../form-control';
+import TextInput from '../text-input';
+import Button from '../button';
 import { ButtonWrapper, StyledForm } from './styled';
-import { H3 } from '../../components/typography';
-import Link from '../../components/link';
+import { H3 } from '../typography';
+import Link from '../link';
 
 export interface LoginModel {
     email?: string;
@@ -18,6 +18,7 @@ export interface LoginProps extends Omit<HTMLAttributes<HTMLFormElement>, 'onSub
     onSubmit?: SubmitHandler;
     initialValues?: LoginModel;
     loading?: boolean;
+    registerLink?: string;
 }
 
 const Login: React.ForwardRefRenderFunction<HTMLFormElement, LoginProps> = (props, ref) => {
@@ -25,6 +26,7 @@ const Login: React.ForwardRefRenderFunction<HTMLFormElement, LoginProps> = (prop
         onSubmit = () => {},
         initialValues = {},
         loading = false,
+        registerLink = '#',
     } = props;
 
     const {
@@ -49,7 +51,7 @@ const Login: React.ForwardRefRenderFunction<HTMLFormElement, LoginProps> = (prop
                     id='email'
                     value={values.email}
                     placeholder='Enter email'
-                    onChange={(e) => handleChange('email')(e.currentTarget.value)}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => handleChange('email')(e.currentTarget.value)}
                     error={!!errors.email}
                 />
             </FormControl>
@@ -61,14 +63,15 @@ const Login: React.ForwardRefRenderFunction<HTMLFormElement, LoginProps> = (prop
             >
                 <TextInput
                     id='password'
+                    type='password'
                     value={values.password}
                     placeholder='Enter password'
-                    onChange={(e) => handleChange('password')(e.currentTarget.value)}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => handleChange('password')(e.currentTarget.value)}
                     error={!!errors.password}
                 />
             </FormControl>
             <ButtonWrapper>
-                <Link href='#'>Create account</Link>
+                <Link href={registerLink}>Create account</Link>
                 <Button
                     onClick={handleSubmit}
                     loading={loading}

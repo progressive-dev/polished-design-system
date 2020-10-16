@@ -13,3 +13,5 @@ export { default as Skeleton } from './skeleton';
 export { default as Spinner } from './spinner';
 
 export { default as TextInput } from './text-input';
+
+export { default as Login } from './login';

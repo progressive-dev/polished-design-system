@@ -5,7 +5,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import Login, { LoginProps } from '.';
 
 export default {
-  title: 'Sections/Login',
+  title: 'Components/Login',
   component: Login,
 } as Meta;
 

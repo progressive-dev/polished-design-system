@@ -1,17 +1,19 @@
-import React, { HTMLAttributes } from 'react';
+import React, { ChangeEventHandler, HTMLAttributes } from 'react';
 import { ComponentSize } from '../../config/sizes';
 import { StyledTextInput, StyledWrapper, StyledIcon, StyledCross } from './styled';
 
-export interface TextInputProps extends Omit<HTMLAttributes<HTMLInputElement>, 'size' | 'disabled'> {
+export interface TextInputProps extends Omit<HTMLAttributes<HTMLInputElement>, 'size' | 'disabled' | 'onChange'> {
     icon?: React.ElementType;
     size?: ComponentSize;
     disabled?: boolean;
     error?: boolean;
     value?: string;
     width?: string;
+    onChange?: ChangeEventHandler<HTMLInputElement>;
     /* Useful when input is controlled by another element */
     readonly?: boolean;
     clearable?: boolean;
+    [key: string]: any;
 }
 
 const TextInput: React.ForwardRefRenderFunction<HTMLInputElement, TextInputProps> = (props, ref) => {
@@ -27,6 +29,7 @@ const TextInput: React.ForwardRefRenderFunction<HTMLInputElement, TextInputProps
         width = '100%',
         readonly = false,
         clearable = false,
+        ...rest
     } = props;
 
     const styles = {
@@ -41,7 +44,7 @@ const TextInput: React.ForwardRefRenderFunction<HTMLInputElement, TextInputProps
     return (
         <StyledWrapper width={width} innerSize={size}>
             <StyledTextInput
-                type='text'
+                type={rest.type || 'text'}
                 value={value}
                 onChange={onChange}
                 readOnly={readonly}
@@ -49,6 +52,7 @@ const TextInput: React.ForwardRefRenderFunction<HTMLInputElement, TextInputProps
                 className={className}
                 placeholder={placeholder}
                 {...styles}
+                {...rest}
             />
             <StyledIcon as={icon} innerSize={size} />
             {clearable && value ? (
@@ -56,7 +60,7 @@ const TextInput: React.ForwardRefRenderFunction<HTMLInputElement, TextInputProps
                     innerSize={size} 
                     onClick={() => 
                         onChange 
-                        && onChange({ currentTarget: { value: '' } } as React.FormEvent<HTMLInputElement>)
+                        && onChange({ currentTarget: { value: '' } } as any)
                     }
                 />
             ) : null}
